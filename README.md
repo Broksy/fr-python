@@ -15,7 +15,7 @@ You can find below the "dictionary" to see how to use the keywords. The first wo
  - `est`: `is`
  - `importer`: `import`
  - `passer`: `pass`
- - `await`: `attendre`
+ - `attendre`: `await`
  - `casser`: `break`
  - `excepter`: `except`
  - `lever`: `raise`
