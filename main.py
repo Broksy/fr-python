@@ -35,7 +35,6 @@ KEYWORDS = {
 parser = argparse.ArgumentParser(description="Transform python code written in french into real python programs")
 parser.add_argument("--inputfile", type=str, help="Filename of the input file")
 args = parser.parse_args()
-print(args.inputfile)
 
 try:
     fr_file = open(args.inputfile, "r")
@@ -50,5 +49,9 @@ code = fr_code
 for french_keyword, english_keyword in KEYWORDS.items():
     code = re.sub(french_keyword, english_keyword, code)
 
+code += "\n\ninput('Press any key to close window')"
+
 out_file = open(out_filepath, "w+")
 out_file.write(code)
+
+os.startfile(out_filepath)
