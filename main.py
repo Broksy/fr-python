@@ -49,7 +49,7 @@ code = fr_code
 for french_keyword, english_keyword in KEYWORDS.items():
     code = re.sub(french_keyword, english_keyword, code)
 
-code += "\n\ninput('Press any key to close window')"
+code += "\n\ninput('Press enter to close window')"
 
 out_file = open(out_filepath, "w+")
 out_file.write(code)
