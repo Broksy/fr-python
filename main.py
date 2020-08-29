@@ -34,6 +34,7 @@ KEYWORDS = {
 
 parser = argparse.ArgumentParser(description="Transform python code written in french into real python programs")
 parser.add_argument("--inputfile", type=str, help="Filename of the input file")
+parser.add_argument("--open", help="Open the generated python file directly after translation", action="store_true")
 args = parser.parse_args()
 
 try:
@@ -49,9 +50,11 @@ code = fr_code
 for french_keyword, english_keyword in KEYWORDS.items():
     code = re.sub(french_keyword, english_keyword, code)
 
-code += "\n\ninput('Press enter to close window')"
+if args.open:
+    code += "\n\n# This is necessary to prevent the python window from closing after program is finished executing. You can remove it if you want.\ninput('Press enter to close window')"
 
 out_file = open(out_filepath, "w+")
 out_file.write(code)
 
-os.startfile(out_filepath)
+if args.open:
+    os.startfile(out_filepath)
